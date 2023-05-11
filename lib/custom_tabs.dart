@@ -1,3 +1,4 @@
+import 'package:ebook_audiobook_flutter/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTabs extends StatelessWidget {
@@ -31,7 +32,7 @@ class CustomTabs extends StatelessWidget {
       child: Text(
         title,
         style: const TextStyle(
-          color: Colors.white,
+          color: kWhiteTagColor,
         ),
       ),
     );

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 //Titles
 const String kFirstSliderTitle = 'Popular Books';
 const List<String> kTabsTitles = ['New', 'Popular', 'Trending'];
+const String kLoveTag = 'Love';
 List<Widget> kTabs = [];
+List<Widget> kLibraryItems = [];
 
 //Size
 const double kAppBarIconSize = 24.0;
@@ -19,12 +21,4 @@ const IconData kAppBarNotificationsIcon = Icons.notifications_active;
 //Styles
 const TextStyle kSliderTitlesStyle = TextStyle(
   fontSize: kSliderTitleSize,
-);
-
-final BoxShadow kBoxShadows = BoxShadow(
-  color: Colors.grey.withOpacity(0.2),
-  //blurring the shadow
-  blurRadius: 7,
-  //dimension
-  offset: const Offset(0, 0),
 );

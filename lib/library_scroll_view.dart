@@ -7,11 +7,13 @@ class LibraryScrollView extends StatelessWidget {
     super.key,
     required ScrollController scrollController,
     required TabController tabController,
+    required this.items,
   })  : _scrollController = scrollController,
         _tabController = tabController;
 
   final ScrollController _scrollController;
   final TabController _tabController;
+  final List items;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class LibraryScrollView extends StatelessWidget {
         controller: _scrollController,
         headerSliverBuilder: (BuildContext context, bool isScroll) {
           return [
-            //Library Bar
+            //Library Top Bar
             SliverAppBar(
               backgroundColor: kSliverBackground,
               pinned: true, //not moving
@@ -40,7 +42,13 @@ class LibraryScrollView extends StatelessWidget {
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
-                        kBoxShadows,
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          //blurring the shadow
+                          blurRadius: 7,
+                          //dimension
+                          offset: const Offset(0, 0),
+                        ),
                       ],
                     ),
                     tabs: kTabs,
@@ -50,40 +58,10 @@ class LibraryScrollView extends StatelessWidget {
             ),
           ];
         },
+        //Libraries
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            Material(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.grey,
-                ),
-                title: Text(
-                  'Content',
-                ),
-              ),
-            ),
-            Material(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.grey,
-                ),
-                title: Text(
-                  'Content',
-                ),
-              ),
-            ),
-            Material(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: Colors.grey,
-                ),
-                title: Text(
-                  'Content',
-                ),
-              ),
-            ),
-          ],
+          children: kLibraryItems,
         ),
       ),
     );

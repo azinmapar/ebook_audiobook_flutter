@@ -69,10 +69,10 @@ class CustomSliderPageView extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               image: DecorationImage(
-                  //extracting image of the book or ... from slides list
-                  // information
-                  image: AssetImage(slides[i]['imageLink']),
-                  fit: BoxFit.fitWidth),
+                //extracting image of the book or ... from slides list information
+                image: AssetImage(slides[i]['imageLink']),
+                fit: BoxFit.fitWidth,
+              ),
             ),
           );
         },

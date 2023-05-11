@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ebook_audiobook_flutter/library_list.dart';
 import 'package:flutter/material.dart';
 import 'package:ebook_audiobook_flutter/app_colors.dart' as AppColors;
 import 'package:ebook_audiobook_flutter/consts.dart';
@@ -17,50 +18,60 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  List popularBooks = [];
+  // [
+  //  [tab, 1, item, list, ...],
+  //  [tab, 2, item, list, ...],
+  //  [tab, 3, item, list, ...]
+  //  ...
+  // ]
+  late List items;
   late ScrollController _scrollController;
   late TabController _tabController;
 
-  void loadTabs() {
+  void loadLibrary() {
     setState(() {
       Color tabColor;
       for (int i = 0; i < kTabsTitles.length; i++) {
-        if (kTabColors.length <= i) {
-          tabColor = kExtraMenu;
-        } else {
-          tabColor = kTabColors[i];
-        }
+        //load tabs
+        tabColor = kTabColors.length <= i ? kExtraMenu : kTabColors[i];
 
         kTabs.add(CustomTabs(title: kTabsTitles[i], color: tabColor));
 
-        //TODO: Make a list for library list tiles and add to it as much as kTabs.length
+        //load library items
+        kLibraryItems.add(LibraryList(items: items[i]));
       }
     });
   }
 
-  void loadPopularBooks() {
-    DefaultAssetBundle.of(context)
-        .loadString('json/popularBooks.json')
-        .then((s) {
-      setState(() {
-        popularBooks = json.decode(s);
+  Future loadData() async {
+    items = List.generate(kTabsTitles.length, (index) => [], growable: true);
+    for (int i = 0; i < kTabsTitles.length; i++) {
+      String tab = kTabsTitles[i];
+      String jsonFileName = 'json/$tab.json';
+      await DefaultAssetBundle.of(context).loadString(jsonFileName).then((s) {
+        setState(() {
+          items[i] = (json.decode(s));
+        });
       });
-    });
+    }
+  }
+
+  void fakeInnit() async {
+    await loadData();
+    loadLibrary();
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    loadTabs();
-    _tabController = TabController(length: kTabs.length, vsync: this);
-    _scrollController = ScrollController();
-
-    loadPopularBooks();
+    fakeInnit();
   }
 
   @override
   Widget build(BuildContext context) {
+    _tabController = TabController(length: kTabs.length, vsync: this);
+    _scrollController = ScrollController();
     return Container(
       color: AppColors.kBackground,
       child: SafeArea(
@@ -101,13 +112,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
               //Slider
               CustomSlider(
-                slides: popularBooks,
+                slides: items[1],
                 title: kFirstSliderTitle,
               ),
               //Library
               LibraryScrollView(
                 scrollController: _scrollController,
                 tabController: _tabController,
+                items: items,
               )
             ],
           ),
