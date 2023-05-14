@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'consts.dart';
-import 'app_colors.dart';
+import 'app_colors.dart' as AppColors;
 
 class LibraryScrollView extends StatelessWidget {
   const LibraryScrollView({
@@ -24,7 +24,7 @@ class LibraryScrollView extends StatelessWidget {
           return [
             //Library Top Bar
             SliverAppBar(
-              backgroundColor: kSliverBackground,
+              backgroundColor: AppColors.kSliverBackground,
               pinned: true, //not moving
               bottom: PreferredSize(
                 //bar height
