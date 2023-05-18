@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:ebook_audiobook_flutter/consts.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart' as AppColors;
@@ -11,6 +12,14 @@ class DetailAudioPage extends StatefulWidget {
 }
 
 class _DetailAudioPageState extends State<DetailAudioPage> {
+  late AudioPlayer customPlayer;
+
+  @override
+  void initState() {
+    super.initState();
+    customPlayer = AudioPlayer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +39,7 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
             color: AppColors.kAudioGreyBackground,
             title: 'THE WATER CURE',
             creator: 'Martin Hyatt',
+            customPlayer: customPlayer,
           ),
           //Cover of currently playing audio
           const AudioCover(

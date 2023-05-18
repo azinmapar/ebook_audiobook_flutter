@@ -1,3 +1,5 @@
+import 'package:audioplayers/audioplayers.dart';
+import 'package:ebook_audiobook_flutter/custom_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart' as AppColors;
 import 'consts.dart';
@@ -75,12 +77,14 @@ class AudioPlayerPositioned extends StatelessWidget {
     required this.color,
     required this.title,
     required this.creator,
+    required this.customPlayer,
   });
 
   final double height;
   final Color color;
   final String title;
   final String creator;
+  final AudioPlayer customPlayer;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +118,8 @@ class AudioPlayerPositioned extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 15.0,
               ),
-            )
+            ),
+            CustomAudioPlayer(customPlayer: customPlayer),
           ],
         ),
       ),
