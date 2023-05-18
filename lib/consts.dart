@@ -2,10 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+//hardcoded
+const String kAudioUrl =
+    'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3';
+
 //Titles
 const String kFirstSliderTitle = 'Popular Books';
 const List<String> kTabsTitles = ['New', 'Popular', 'Trending'];
 const String kLoveTag = 'Love';
+const String kItemDetailTitle = 'Book Details';
 List<Widget> kTabs = [];
 List<Widget> kLibraryItems = [];
 
@@ -36,3 +41,5 @@ final double kAudioPlayerSizedBoxHeight = kScreenHeight * 0.1;
 final double kPlayingAudioCoverDimensions = kScreenWidth * 0.3;
 final double kPlayingAudioCoverHorizontalPosition =
     (kScreenWidth - kPlayingAudioCoverDimensions) / 2;
+final double kAudioPageInformationHeight = kScreenHeight * 0.37;
+final kAudioDetailWidth = kScreenWidth / 2;

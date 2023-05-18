@@ -4,8 +4,9 @@ import 'app_colors.dart' as AppColors;
 
 class CustomAudioPlayer extends StatefulWidget {
   final AudioPlayer customPlayer;
-
-  const CustomAudioPlayer({Key? key, required this.customPlayer})
+  final String audioUrl;
+  const CustomAudioPlayer(
+      {Key? key, required this.customPlayer, required this.audioUrl})
       : super(key: key);
 
   @override
@@ -18,8 +19,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
   Duration _duration = Duration();
   Duration _position = Duration();
   //final String path = 'audiosample.mp3';
-  final String path =
-      'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3';
+  String path = '';
   bool isPlaying = false;
   bool isPaused = false;
   bool isRepeat = false;
@@ -39,6 +39,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    path = widget.audioUrl;
     widget.customPlayer.onDurationChanged.listen((d) {
       setState(() {
         _duration = d;
@@ -61,6 +62,13 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
         }
       });
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    widget.customPlayer.dispose();
+    super.dispose();
   }
 
   Widget playPauseButton() {

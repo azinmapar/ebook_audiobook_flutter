@@ -5,7 +5,9 @@ import 'app_colors.dart' as AppColors;
 import 'positioned_widgets.dart';
 
 class DetailAudioPage extends StatefulWidget {
-  const DetailAudioPage({Key? key}) : super(key: key);
+  final item;
+
+  const DetailAudioPage({Key? key, required this.item}) : super(key: key);
 
   @override
   State<DetailAudioPage> createState() => _DetailAudioPageState();
@@ -37,13 +39,25 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
           AudioPlayerPositioned(
             height: kAudioPlayerHeight,
             color: AppColors.kAudioGreyBackground,
-            title: 'THE WATER CURE',
-            creator: 'Martin Hyatt',
+            title: widget.item['title'],
+            creator: widget.item['author'],
             customPlayer: customPlayer,
+            //should be widget/item['link'] but we don't have a specific url for every item in our json so this is a default url
+            audioUrl: kAudioUrl,
           ),
           //Cover of currently playing audio
-          const AudioCover(
-            imageAddress: 'images/beloved.jpg',
+          AudioCover(
+            imageAddress: widget.item['imageLink'],
+          ),
+
+          AudioInformation(
+            language: widget.item['language'],
+            pages: widget.item['pages'],
+            year: widget.item['year'],
+          ),
+
+          AudioDetailCoverImage(
+            cover: widget.item['imageLink'],
           ),
         ],
       ),
