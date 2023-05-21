@@ -3,6 +3,7 @@ import 'package:ebook_audiobook_flutter/custom_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart' as AppColors;
 import 'consts.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 //extracted widgets which came from positioned from audio player pager
 
@@ -108,19 +109,39 @@ class AudioPlayerPositioned extends StatelessWidget {
               height: kAudioPlayerSizedBoxHeight,
             ),
             //title
-            Text(
-              title,
-              style: const TextStyle(
-                fontFamily: 'Avenir',
-                fontSize: 30.0,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.only(
+                  right: kResponsivePadding20Pixels,
+                  left: kResponsivePadding20Pixels),
+              child: TextScroll(
+                title,
+                mode: TextScrollMode.endless,
+                velocity: const Velocity(pixelsPerSecond: Offset(80, 0)),
+                delayBefore: const Duration(seconds: 1),
+                numberOfReps: 5,
+                pauseBetween: const Duration(seconds: 1),
+                style: TextStyle(
+                  fontFamily: 'Avenir',
+                  fontSize: k30FontSize,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.right,
+                selectable: false,
               ),
             ),
+            // Text(
+            //   title,
+            //   style: const TextStyle(
+            //     fontFamily: 'Avenir',
+            //     fontSize: 30.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
             //creator
             Text(
               creator,
-              style: const TextStyle(
-                fontSize: 15.0,
+              style: TextStyle(
+                fontSize: k15FontSize,
               ),
             ),
             CustomAudioPlayer(
@@ -206,9 +227,10 @@ class AudioInformation extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text(
+            Text(
               kItemDetailTitle,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(fontSize: k30FontSize, fontWeight: FontWeight.bold),
             ),
             Expanded(
               child: Padding(
@@ -260,17 +282,32 @@ class ItemDetails extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
-          size: 33.0,
+          size: k33IconSize,
         ),
         const SizedBox(
           width: 5.0,
         ),
-        Text(
-          detailText,
-          style: const TextStyle(
-            fontSize: 20,
+        Expanded(
+          child: TextScroll(
+            detailText,
+            mode: TextScrollMode.endless,
+            velocity: const Velocity(pixelsPerSecond: Offset(80, 0)),
+            delayBefore: const Duration(seconds: 1),
+            numberOfReps: 5,
+            pauseBetween: const Duration(seconds: 1),
+            style: TextStyle(
+              fontSize: k20FontSize,
+            ),
+            textAlign: TextAlign.right,
+            selectable: false,
           ),
-        ),
+        )
+        // Text(
+        //   detailText,
+        //   style: const TextStyle(
+        //     fontSize: 20,
+        //   ),
+        // ),
       ],
     );
   }

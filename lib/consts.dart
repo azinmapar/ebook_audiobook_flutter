@@ -42,4 +42,17 @@ final double kPlayingAudioCoverDimensions = kScreenWidth * 0.3;
 final double kPlayingAudioCoverHorizontalPosition =
     (kScreenWidth - kPlayingAudioCoverDimensions) / 2;
 final double kAudioPageInformationHeight = kScreenHeight * 0.37;
-final kAudioDetailWidth = kScreenWidth / 2;
+final double kAudioDetailWidth = kScreenWidth / 2;
+final double kResponsivePadding20Pixels = kScreenWidth * 0.05;
+final double k30FontSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 30.0 : 40.0;
+final double k15FontSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 15.0 : 25.0;
+final double k20FontSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 20.0 : 30.0;
+final double k50IconSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 50.0 : 60.0;
+final double k33IconSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 33.0 : 43.0;
+final double k25IconSize =
+    SizerUtil.deviceType == DeviceType.mobile ? 25.0 : 35.0;

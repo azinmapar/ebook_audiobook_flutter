@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:ebook_audiobook_flutter/consts.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart' as AppColors;
 
@@ -91,12 +92,12 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
       icon: !isPlaying
           ? Icon(
               _icons[0],
-              size: 50.0,
+              size: k50IconSize,
               color: AppColors.kAudioAssetsActiveColor,
             )
           : Icon(
               _icons[1],
-              size: 50.0,
+              size: k50IconSize,
               color: AppColors.kAudioAssetsActiveColor,
             ),
     );
@@ -112,7 +113,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
       },
       child: Text(
         '2x',
-        style: TextStyle(fontSize: 20.0, color: fastSpeedColor),
+        style: TextStyle(fontSize: k20FontSize, color: fastSpeedColor),
       ),
     );
   }
@@ -127,7 +128,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
       },
       child: Text(
         '1x',
-        style: TextStyle(fontSize: 20.0, color: slowSpeedColor),
+        style: TextStyle(fontSize: k20FontSize, color: slowSpeedColor),
       ),
     );
   }
@@ -148,7 +149,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
         }
       },
       icon: const Icon(Icons.repeat_one_rounded),
-      iconSize: 25.0,
+      iconSize: k25IconSize,
       color: repeatColor,
     );
   }
@@ -167,7 +168,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
         }
       },
       icon: const Icon(Icons.shuffle),
-      iconSize: 25.0,
+      iconSize: k25IconSize,
       color: shuffleColor,
     );
   }
@@ -200,14 +201,14 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
               children: [
                 Text(
                   _position.toString().split('.')[0],
-                  style: const TextStyle(
-                    fontSize: 16.0,
+                  style: TextStyle(
+                    fontSize: k15FontSize,
                   ),
                 ),
                 Text(
                   _duration.toString().split('.')[0],
-                  style: const TextStyle(
-                    fontSize: 16.0,
+                  style: TextStyle(
+                    fontSize: k15FontSize,
                   ),
                 ),
               ],
