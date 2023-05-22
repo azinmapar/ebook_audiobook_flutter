@@ -44,6 +44,7 @@ final double kPlayingAudioCoverHorizontalPosition =
 final double kAudioPageInformationHeight = kScreenHeight * 0.37;
 final double kAudioDetailWidth = kScreenWidth / 2;
 final double kResponsivePadding20Pixels = kScreenWidth * 0.05;
+final double kResponsivePadding8Pixels = kScreenWidth * 0.02;
 final double k30FontSize =
     SizerUtil.deviceType == DeviceType.mobile ? 30.0 : 40.0;
 final double k15FontSize =

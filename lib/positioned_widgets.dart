@@ -176,8 +176,9 @@ class AudioCover extends StatelessWidget {
           color: AppColors.kAudioBluishBackground,
           borderRadius: BorderRadius.circular(20.0),
           border: Border.all(
-              color: AppColors.kTabVarViewColor,
-              width: kPlayingAudioCoverBorderWidth),
+            color: AppColors.kTabVarViewColor,
+            width: kPlayingAudioCoverBorderWidth,
+          ),
         ),
         //padding around cover image
         child: Padding(
