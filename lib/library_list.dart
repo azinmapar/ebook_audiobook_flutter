@@ -108,16 +108,16 @@ class LibraryList extends StatelessWidget {
                           ),
                           //tag
                           Container(
-                            width: 50.0,
+                            width: 60.0,
                             height: 20.0,
                             decoration: BoxDecoration(
-                              color: AppColor.kLoveColor,
+                              color: AppColor.kFavoriteColor,
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             alignment: Alignment.center,
                             //tag text
                             child: const Text(
-                              kLoveTag,
+                              kFavoriteTag,
                               style: TextStyle(
                                 color: AppColor.kWhiteTagColor,
                               ),

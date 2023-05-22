@@ -9,7 +9,7 @@ const String kAudioUrl =
 //Titles
 const String kFirstSliderTitle = 'Popular Books';
 const List<String> kTabsTitles = ['New', 'Popular', 'Trending'];
-const String kLoveTag = 'Love';
+const String kFavoriteTag = 'Favorite';
 const String kItemDetailTitle = 'Book Details';
 List<Widget> kTabs = [];
 List<Widget> kLibraryItems = [];

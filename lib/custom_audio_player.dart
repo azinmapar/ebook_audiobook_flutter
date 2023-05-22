@@ -24,10 +24,10 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
   bool isPlaying = false;
   bool isPaused = false;
   bool isRepeat = false;
-  bool isShuffle = false;
+  //bool isShuffle = false;
   Speed speed = Speed.slow;
   Color repeatColor = AppColors.kAudioAssetsInactiveColor;
-  Color shuffleColor = AppColors.kAudioAssetsInactiveColor;
+  Color favoriteColor = AppColors.kAudioAssetsActiveColor;
   Color fastSpeedColor = AppColors.kAudioAssetsInactiveColor;
   Color slowSpeedColor = AppColors.kAudioAssetsActiveColor;
 
@@ -154,38 +154,36 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer> {
     );
   }
 
-  Widget shuffleButton() {
+  Widget favoriteButton() {
     return IconButton(
       onPressed: () {
-        if (!isShuffle) {
-          setState(() {
-            isShuffle = true;
-            shuffleColor = AppColors.kAudioAssetsActiveColor;
-          });
-        } else {
-          //widget.customPlayer.setReleaseMode(ReleaseMode.release);
-          repeatColor = AppColors.kAudioAssetsInactiveColor;
-        }
+        // if (!isShuffle) {
+        //   setState(() {
+        //     isShuffle = true;
+        //     shuffleColor = AppColors.kAudioAssetsActiveColor;
+        //   });
+        // } else {
+        //   //widget.customPlayer.setReleaseMode(ReleaseMode.release);
+        //   repeatColor = AppColors.kAudioAssetsInactiveColor;
+        // }
       },
-      icon: const Icon(Icons.shuffle),
+      icon: const Icon(Icons.favorite),
       iconSize: k25IconSize,
-      color: shuffleColor,
+      color: favoriteColor,
     );
   }
 
   Widget assetButtons() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          shuffleButton(),
-          slowButton(),
-          playPauseButton(),
-          fastButton(),
-          repeatButton(),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        favoriteButton(),
+        slowButton(),
+        playPauseButton(),
+        fastButton(),
+        repeatButton(),
+      ],
     );
   }
 
